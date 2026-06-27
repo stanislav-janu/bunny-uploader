@@ -44,3 +44,7 @@
 "Server did not return a part Location URL" = "Server nevrátil Location URL části";
 "Missing API key or Library ID (Settings)" = "Chybí API klíč nebo Library ID (Nastavení)";
 "Could not start TUS: %@" = "TUS nešlo spustit: %@";
+
+/* Notifications */
+"Upload complete" = "Upload dokončen";
+"Upload failed" = "Upload selhal";

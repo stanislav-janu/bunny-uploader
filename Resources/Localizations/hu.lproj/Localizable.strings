@@ -38,3 +38,7 @@
 "Server did not return a part Location URL" = "A kiszolgáló nem adott vissza Location URL-t a részhez";
 "Missing API key or Library ID (Settings)" = "Hiányzó API-kulcs vagy Library ID (Beállítások)";
 "Could not start TUS: %@" = "Nem sikerült elindítani a TUS-t: %@";
+
+/* Notifications */
+"Upload complete" = "Feltöltés kész";
+"Upload failed" = "Feltöltés sikertelen";

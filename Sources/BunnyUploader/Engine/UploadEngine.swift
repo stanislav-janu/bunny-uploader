@@ -71,6 +71,19 @@ final class UploadEngine: ObservableObject {
         totalThroughputMBps = items
             .filter { $0.state == .uploading }
             .reduce(0) { $0 + $1.throughputMBps }
+        updateDockProgress()
+    }
+
+    /// Shows aggregate upload progress on the Dock icon, or clears it when idle.
+    private func updateDockProgress() {
+        let uploading = items.filter { $0.state == .uploading }
+        guard !uploading.isEmpty else {
+            DockProgress.clear()
+            return
+        }
+        let total = uploading.reduce(0.0) { $0 + Double($1.fileSize) }
+        let done = uploading.reduce(0.0) { $0 + Double($1.bytesUploaded) }
+        DockProgress.show(progress: total > 0 ? done / total : 0)
     }
 
     func saveCredentials(_ new: Credentials) {
@@ -135,6 +148,7 @@ final class UploadEngine: ObservableObject {
             guid = try await client.createVideo(title: item.fileName)
         } catch {
             item.state = .error(error.localizedDescription)
+            Notifications.uploadFailed(fileName: item.fileName, message: error.localizedDescription)
             return
         }
         // The user may have cancelled the upload in the meantime.
@@ -199,6 +213,7 @@ final class UploadEngine: ObservableObject {
             item.throughputMBps = 0
             item.state = .error(error.localizedDescription)
             recomputeAggregate()
+            Notifications.uploadFailed(fileName: item.fileName, message: error.localizedDescription)
         }
     }
 
@@ -222,6 +237,7 @@ final class UploadEngine: ObservableObject {
                         self?.samples[item.id] = nil
                         self?.tusIds[item.id] = nil
                         self?.recomputeAggregate()
+                        Notifications.uploadFailed(fileName: item.fileName, message: error.localizedDescription)
                     }
                 )
             )
@@ -259,6 +275,7 @@ final class UploadEngine: ObservableObject {
         samples[item.id] = nil
         tusIds[item.id] = nil
         recomputeAggregate()
+        Notifications.uploadFinished(fileName: item.fileName)
         // Optionally track transcoding status.
         Task { await self.pollProcessing(item) }
     }

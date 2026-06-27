@@ -38,3 +38,7 @@
 "Server did not return a part Location URL" = "Serwer nie zwrócił adresu URL Location części";
 "Missing API key or Library ID (Settings)" = "Brak klucza API lub Library ID (Ustawienia)";
 "Could not start TUS: %@" = "Nie udało się uruchomić TUS: %@";
+
+/* Notifications */
+"Upload complete" = "Przesyłanie zakończone";
+"Upload failed" = "Przesyłanie nie powiodło się";

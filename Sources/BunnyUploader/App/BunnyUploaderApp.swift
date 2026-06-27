@@ -15,6 +15,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Register the service provider for the Quick Action in Finder's context menu.
         NSApp.servicesProvider = self
         NSUpdateDynamicServices()
+        // Ask for notification permission so completed uploads can notify.
+        Notifications.requestAuthorization()
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {

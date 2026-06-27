@@ -44,3 +44,7 @@
 "Server did not return a part Location URL" = "Server did not return a part Location URL";
 "Missing API key or Library ID (Settings)" = "Missing API key or Library ID (Settings)";
 "Could not start TUS: %@" = "Could not start TUS: %@";
+
+/* Notifications */
+"Upload complete" = "Upload complete";
+"Upload failed" = "Upload failed";
