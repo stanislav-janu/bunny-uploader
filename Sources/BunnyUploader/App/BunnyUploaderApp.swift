@@ -10,6 +10,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var buffered: [URL] = []
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Single-window utility: no window tabs.
+        NSWindow.allowsAutomaticWindowTabbing = false
         // Register the service provider for the Quick Action in Finder's context menu.
         NSApp.servicesProvider = self
         NSUpdateDynamicServices()
@@ -55,7 +57,7 @@ struct BunnyUploaderApp: App {
     @StateObject private var engine = UploadEngine()
 
     var body: some Scene {
-        WindowGroup {
+        Window("Bunny Stream Uploader", id: "main") {
             ContentView()
                 .environmentObject(engine)
                 .frame(minWidth: 560, minHeight: 420)

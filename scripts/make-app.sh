@@ -75,7 +75,7 @@ cat > "$APP_DIR/Contents/Info.plist" <<PLIST
         <dict>
             <key>NSMenuItem</key>
             <dict>
-                <key>default</key><string>Upload do Bunny</string>
+                <key>default</key><string>Upload to Bunny</string>
             </dict>
             <key>NSMessage</key><string>uploadToBunny</string>
             <key>NSSendFileTypes</key>
