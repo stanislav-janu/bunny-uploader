@@ -1,5 +1,7 @@
 # Bunny Stream Uploader
 
+[![Build](https://github.com/stanislav-janu/bunny-stream-uploader/actions/workflows/build.yml/badge.svg)](https://github.com/stanislav-janu/bunny-stream-uploader/actions/workflows/build.yml)
+
 A native macOS app for uploading large video files to [Bunny Stream](https://bunny.net) as fast as the link allows. It splits a single file into many parts and uploads them in parallel over TUS `concatenation`, reaching multiples of single-stream throughput.
 
 On a test link a single 9 GB file went from ~56 minutes (single stream) to ~5 minutes (64 parallel threads), roughly 11x faster.
